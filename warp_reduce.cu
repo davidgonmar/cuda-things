@@ -16,7 +16,6 @@ __device__ float warp_reduce_max(float val) {
         // gets the val of 'this_thread + offset'
         // then compares it with this val.
         // as we can see when this is printed, for (lane_id + offset) > 31, the retrieved value is the same as the current value.
-        printf("val: %f, retrieved val: %f, offset: %d, lane_id: %d\n", val, __shfl_down_sync(FULL_MASK, val, offset), offset, lane_id);
         val = max(val, __shfl_down_sync(FULL_MASK, val, offset));
     }
     return val;
