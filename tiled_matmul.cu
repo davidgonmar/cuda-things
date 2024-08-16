@@ -3,6 +3,8 @@
 #include <ctime>
 #include <cuda_runtime.h>
 
+// nvcc -o tiled_matmul tiled_matmul.cu && tiled_matmul
+
 void checkCudaError(cudaError_t err, const char* msg) {
     if (err != cudaSuccess) {
         std::cerr << "CUDA Error: " << msg << " - " << cudaGetErrorString(err) << std::endl;
